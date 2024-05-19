@@ -1,1 +1,39 @@
+Ahmad bin Abdullah
+001  
+320  
 
+Nurul binti Ahmad
+002  
+210  
+
+Hafizah binti Hakimi
+003  
+450  
+
+Amirul bin Muhamad
+004  
+180  
+
+Siti Aishah binti Ibrahim
+005  
+600  
+
+Thiva A/P Raju
+006  
+50  
+
+Zara binti Ahmad
+007  
+720  
+
+Teh Ru Qian
+008  
+888
+
+Aisyah binti Abu Bakar
+009  
+150  
+
+Luqman Amirul
+010  
+480  
