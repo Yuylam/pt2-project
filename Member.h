@@ -53,15 +53,19 @@ public:
     }
 
     int calcDiscount() const {
-        return points / 100;
+        int disc = points / 100;
+        price -= disc;
+        return disc;
     }
     void updateMemberPoints(){
         points %= 100;
+        int newPoints = price/100;
+        points += newPoints;
     }
+    
     void print(){
         printReceipt()
         cout << setw(30) << left << "Member point: " << getpoints() << endl; 
 
     }
 };
-
