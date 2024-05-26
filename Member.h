@@ -59,12 +59,12 @@ public:
     }
     void updateMemberPoints(){
         points %= 100;
-        int newPoints = price/100;
+        int newPoints = static_cast<int>(price);
         points += newPoints;
     }
     
     void print(){
-        printReceipt()
+        printReceipt();
         cout << setw(30) << left << "Member point: " << getpoints() << endl; 
 
     }
