@@ -10,7 +10,6 @@
 #include "Member.h"
 #include "Manager.h"
 
-
 using namespace std;
 
 // to read members.txt and push into vector
@@ -30,7 +29,7 @@ void readMembers(vector<Member>& members, const string& filename)
     {
         memberFile >> memberCode >> memberPoint;
         memberFile.ignore(); // Ignore the remaining newline after memberPoint
-        members.push_back(Member(name, memberCode, memberPoint));
+        members.push_back(Member(memberCode, name, memberPoint));
     }
     memberFile.close();
 }
@@ -98,7 +97,7 @@ int main()
         for (size_t i = 0; i < members.size(); ++i)
         {
             // check if the member's ID == the memberID entered
-            if (members[i].getMemberCode() == memberID)
+            if (members[i].getMemberID() == memberID)
             {
                 // if found, update memberIndex with the index of the memberID
                 memberIndex = static_cast<int>(i);
@@ -109,9 +108,10 @@ int main()
         // after we found the memberID in vector, the numberIndex change, != -1
         if (memberIndex != -1)
         {
+            members[memberIndex].getItemCode();
             members[memberIndex].updateMemberPoints();
             double discount = members[memberIndex].calcDiscount();
-            members[memberIndex].printMember();
+            members[memberIndex].print();
         }
         else
         {

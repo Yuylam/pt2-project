@@ -1,4 +1,4 @@
-#ifdef MEMBER_H
+#ifndef MEMBER_H
 #define MEMBER_H
 
 #include "User.h"
@@ -52,7 +52,7 @@ public:
         return points;
     }
 
-    int calcDiscount() const {
+    int calcDiscount() {
         int disc = points / 100;
         price -= disc;
         return disc;
@@ -65,7 +65,9 @@ public:
     
     void print(){
         printReceipt();
-        cout << setw(30) << left << "Member point: " << getpoints() << endl; 
+        cout << setw(30) << left << "Member point: " << getPoints() << endl; 
 
     }
 };
+
+#endif

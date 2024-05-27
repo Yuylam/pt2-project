@@ -53,6 +53,7 @@ class Item {
         ~Item(){};
 
         //add item
+        friend class User;
 };
 
 #endif
