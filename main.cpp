@@ -19,7 +19,7 @@ void readMembers(vector<Member>& members, const string& filename)
     if (!memberFile.is_open())
     {
         cerr << "Error opening file: " << filename << endl;
-        exit(1);
+        exit;
     }
     
     string name;
@@ -41,7 +41,7 @@ void readItems(vector<Item>& items, const string& filename)
     if (!itemFile.is_open())
     {
         cerr << "Error opening file: " << filename << endl;
-        exit(1);
+        exit;
     }
     
     int itemCode, quantity;
@@ -68,8 +68,15 @@ int main()
     vector<Item> items;
 
     // pass the vector and filename to read input file function
-    readMembers(members, "members.txt");
-    readItems(items, "items.txt");
+    readMembers(members, "C:/Users/Teh/Downloads/members.txt");
+    readItems(items, "C:/Users/Teh/Downloads/items.txt");
+
+    //testing
+    cout << "Items loaded:\n";
+    for (const auto& item : items) {
+        cout << "Code: " << item.getCode() << ", Description: " << item.getDescription() 
+             << ", Price: " << item.getPrice() << ", Quantity: " << item.getQuantity() << endl;
+    }
 
     // print the header and prompt user to enter the member ID
     cout << "**************************************************" << endl;

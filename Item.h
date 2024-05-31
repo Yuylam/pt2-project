@@ -28,8 +28,20 @@ class Item {
         }
         
         //function is used to compare with the user input
-        int getCode(){
+        int getCode()const{
             return code;
+        }
+
+        string getDescription()const{
+            return description;
+        }
+
+        double getPrice()const{
+            return price;
+        }
+
+        int getQuantity()const{
+            return quantity;
         }
 
 
@@ -53,7 +65,7 @@ class Item {
         ~Item(){};
 
         //add item
-        friend class User;
+       friend class User;
 };
 
 #endif

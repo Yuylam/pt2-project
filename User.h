@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include <iomanip>
-#include "Member.h"
+//#include "Member.h"
 #include "Item.h"
 using namespace std;
 

@@ -71,10 +71,10 @@ class Manager{
         }
     
     void daySales(){
-        cout << "Total Sales: RM " << totalSales << endl;   //take it from user class
-        cout << "Total Items: RM " << totalItems << endl;   //take it from user class
-        cout << "Total Transactions: RM " << totalTransactions << endl;   //take it from user class
-        cout << "Average Amount per Transaction: RM " << totalSales / totalTransactions << endl;
+        cout << "Total Sales: RM " << User::totalSales << endl;   //take it from user class
+        cout << "Total Items: RM " << User::totalItems << endl;   //take it from user class
+        cout << "Total Transactions: RM " << User::totalTransactions << endl;   //take it from user class
+        cout << "Average Amount per Transaction: RM " << User::totalSales / User::totalTransactions << endl;
     }
 
     void displayMemberInfo(){
@@ -85,9 +85,9 @@ class Manager{
 
         //for (auto iter = members.begin(); iter != members.end(); iter++){
         for (auto& member:members){
-            cout << left << setw(20) << member.memberName    //take from member class
-                 << left << setw(8) << member.memberID    //take from member class
-                 << left << setw(8) << member.points;   //take from member class 
+            cout << left << setw(20) << member.getMemberName()    //take from member class
+                 << left << setw(8) << member.getMemberID()    //take from member class
+                 << left << setw(8) << member.getPoints();   //take from member class 
         }
     }
 

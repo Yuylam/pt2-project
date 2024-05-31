@@ -2,14 +2,13 @@
 #define MEMBER_H
 
 #include "User.h"
-#include "Manager.h"
-#include "Item.h"
+//#include "Manager.h"
+//#include "Item.h"
 #include <iostream>
 #include <iomanip>
 using namespace std;
 
-class Member : public User
-{
+class Member : public User {
 private:
     int memberID;
     string memberName;
