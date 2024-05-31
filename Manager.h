@@ -52,7 +52,7 @@ class Manager{
                         break;
                     case 5:
                         cout << "Exiting program...\n";
-                        break;
+                        exit (0);
 
                     default:
                         cout << "Invalid choice. Please try again.\n";
@@ -67,14 +67,14 @@ class Manager{
                 // else if (choice == 3){
                 //     updateItems();
                 // }
-            }while (choice < 6);
+            }while (choice != 5);
         }
     
     void daySales(){
-        cout << "Total Sales: RM " << User::totSales << endl;   //take it from user class
-        cout << "Total Sales: RM " << User::totItems << endl;   //take it from user class
-        cout << "Total Sales: RM " << User::totTransactions << endl;   //take it from user class
-        cout << "Average Amount per Transaction: RM " << User::totSales / User::totTransactions << endl;
+        cout << "Total Sales: RM " << totalSales << endl;   //take it from user class
+        cout << "Total Items: RM " << totalItems << endl;   //take it from user class
+        cout << "Total Transactions: RM " << totalTransactions << endl;   //take it from user class
+        cout << "Average Amount per Transaction: RM " << totalSales / totalTransactions << endl;
     }
 
     void displayMemberInfo(){
@@ -95,12 +95,14 @@ class Manager{
         int code;
         double newPrice;
         int newQuantity;
+        bool found = false;
 
         cout << "Enter the code of the item to update:";
         cin >> code;
+        
 
         for (auto& item:items){
-            if (item.getCode() == code){
+            if (item.getCode() == code && found == false){
 
                 //update price
                 cout << "Enter the new price: ";
@@ -114,9 +116,12 @@ class Manager{
 
                 //Display updated infomation
                 item.display();
+
+                //update flag
+                found = true;
+                break;
             }
-            else 
-                cout << "The code is not found.";
+        
         }
 
 
