@@ -149,7 +149,7 @@ class User{
 
 // Static member initialisation
 double User::totalSales = 0;
-double User::totalItems = 0;
+int User::totalItems = 0;
 int User::totalTransactions = 0;
 
 #endif
