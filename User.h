@@ -8,11 +8,14 @@
 #include "Item.h"
 using namespace std;
 
-vector <Item> items;
+extern vector <Item> items;
 
 int findItemIndex(int code){
-    for (int i = 0; i < items.size(); i++){
+    cout << "Searching for item code: " << code << endl; //testing
+    for (int i = 0; i < 10; i++){
+        cout << "Comparing input code: " << code << " with item code: " << items[i].getCode() << endl;  //testing
         if(items[i].getCode() == code){
+            cout << "Item found at index: " << i << endl; //testing
             return i;
         }
     }
@@ -40,6 +43,7 @@ class User{
             int code, index = -1;
             cout << "Item code: ";
             cin >> code;
+            cout << "Entered code: " << code << endl; //testing
             while(code == -1){
                 cout << "Invalid code\n";
                 cout << "Enter the item code: ";
@@ -57,13 +61,19 @@ class User{
 
                     index = findItemIndex(code);
                 }
-                quantity ++;
-                itemsIndex.push_back(index);
-                price += items[index].price;
-                items[index].quantity--;
+                if (index != -1){
+                     quantity ++;
+                     itemsIndex.push_back(index);
+                     price += items[index].price;
+                     items[index].quantity--;
+
+
+                     printItems();
+                     cout << setw(30) << left <<  "Subtotal" << setw(15) << right << price << endl << endl;
+                }
+               
                 
-                printItems();
-                cout << setw(30) << left <<  "Subtotal" << setw(15) << right << price << endl << endl;
+                
 
                 cout << "Enter -1 to proceed to payment\n";
                 cout << "Enter the item code: ";
@@ -98,7 +108,7 @@ class User{
             << setw(15) << right << "Unit Price(RM)\n";
             for (int i = 0; i < quantity; i++){
                 cout 
-                << setw(5) << left << items[itemsIndex[i]].code 
+                << setw(5) << left << items[itemsIndex[i]].icode 
                 << setw(25) << left << items[itemsIndex[i]].description.substr(0,25) 
                 << setw(15) << right << items[itemsIndex[i]].price << endl;
             }

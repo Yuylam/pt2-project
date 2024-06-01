@@ -11,25 +11,28 @@
 
 using namespace std;
 
+//vector<Item> items;
+
 class Item {
     private:
-        int code;
+        int icode;
         string description;
         double price;
         int quantity;
+        //vector<Item> items;
     
     public:
         //Constructor
-        Item(int _code = 0, string _description = "",double _price = 0.0, int _quantity = 0 ){
-            code = _code;
+        Item(int _icode = 0, string _description = "",double _price = 0.0, int _quantity = 0 ){
+            icode = _icode;
             description = _description;
             price = _price;
             quantity = _quantity;
         }
-        
+    
         //function is used to compare with the user input
         int getCode()const{
-            return code;
+            return icode;
         }
 
         string getDescription()const{
@@ -54,7 +57,7 @@ class Item {
         }
 
         void display()const {
-            cout << left << setw(10) << code
+            cout << left << setw(10) << icode
                  << left << setw(30) << description
                  << left << setw(10) << price
                  << left << setw(10) << quantity << endl;
