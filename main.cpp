@@ -12,6 +12,8 @@
 
 using namespace std;
 
+vector<Item> items;
+
 // to read members.txt and push into vector
 void readMembers(vector<Member>& members, const string& filename)
 {
@@ -29,7 +31,7 @@ void readMembers(vector<Member>& members, const string& filename)
     {
         memberFile >> memberCode >> memberPoint;
         memberFile.ignore(); // Ignore the remaining newline after memberPoint
-        members.push_back(Member(memberCode, name, memberPoint));
+        members.push_back(Member(name, memberCode, memberPoint));
     }
     memberFile.close();
 }
@@ -55,6 +57,10 @@ void readItems(vector<Item>& items, const string& filename)
         itemFile >> price >> quantity;
         itemFile.ignore(); // Ignore the remaining newline after quantity
         items.push_back(Item(itemCode,description,price,quantity));
+
+        //testing
+        cout << "Read item - Code: " << itemCode << ", Description: " << description 
+             << ", Price: " << price << ", Quantity: " << quantity << endl;
     }
     itemFile.close();
 }
@@ -72,18 +78,21 @@ int main()
     readItems(items, "C:/Users/Teh/Downloads/items.txt");
 
     //testing
-    cout << "Items loaded:\n";
-    for (const auto& item : items) {
-        cout << "Code: " << item.getCode() << ", Description: " << item.getDescription() 
-             << ", Price: " << item.getPrice() << ", Quantity: " << item.getQuantity() << endl;
-    }
-
+    // cout << "Items loaded:\n";
+    // for (const auto& item : items) {
+    //     cout << "Code: " << item.getCode() << ", Description: " << item.getDescription() 
+    //          << ", Price: " << item.getPrice() << ", Quantity: " << item.getQuantity() << endl;
+    // }
+    
     // print the header and prompt user to enter the member ID
     cout << "**************************************************" << endl;
     cout << setw(38) << "The Perfect Grocery Shop" << endl;
     cout << "**************************************************" << endl;
     cout << "Member ID (Enter -1 if not a member): ";
     cin >> memberID;
+
+    //testing
+    cout << "Entered Member ID: " << memberID << endl;
 
     // case non-member
     if (memberID == -1) 

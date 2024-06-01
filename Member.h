@@ -21,7 +21,7 @@ public:
         setPoints(0);
     }
 
-    Member(int id, string name, int point){
+    Member(string name, int id, int point){
         setMemberID(id);
         setMemberName(name);
         setPoints(point);
