@@ -22,7 +22,7 @@ int findItemIndex(int code){
 class User{
     private:
         static double totalSales;
-        static double totalItems;
+        static int totalItems;
         static int totalTransactions;
 
     protected:

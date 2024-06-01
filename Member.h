@@ -39,7 +39,7 @@ public:
         memberName = name;
     }
 
-    string getMemberName(){
+    string getMemberName()const{
         return memberName;
     }
 
@@ -47,7 +47,7 @@ public:
         points = point;
     }
 
-    int getPoints(){
+    int getPoints()const{
         return points;
     }
 

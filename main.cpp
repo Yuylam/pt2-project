@@ -59,17 +59,16 @@ void readItems(vector<Item>& items, const string& filename)
     itemFile.close();
 }
 
+vector<Member> members;
 
 int main()
 {
     // variable and vector declaration
     int memberID;
-    vector<Member> members;
-    vector<Item> items;
 
     // pass the vector and filename to read input file function
-    readMembers(members, "C:/Users/Teh/Downloads/members.txt");
-    readItems(items, "C:/Users/Teh/Downloads/items.txt");
+    readMembers(members, "members.txt");
+    readItems(items, "items.txt");
 
     //testing
     cout << "Items loaded:\n";
@@ -78,59 +77,69 @@ int main()
              << ", Price: " << item.getPrice() << ", Quantity: " << item.getQuantity() << endl;
     }
 
-    // print the header and prompt user to enter the member ID
-    cout << "**************************************************" << endl;
-    cout << setw(38) << "The Perfect Grocery Shop" << endl;
-    cout << "**************************************************" << endl;
-    cout << "Member ID (Enter -1 if not a member): ";
-    cin >> memberID;
-
-    // case non-member
-    if (memberID == -1) 
-    {
-        User user;
-        cout << "Welcome!" << endl;
-        user.getItemCode();
-        user.printReceipt();
+    cout << "Members loaded:\n";
+    for (const auto& member : members) {
+        cout 
+        << "ID: " << member.getMemberID() << ", "
+        << "Name: " << member.getMemberName() << ", "
+        << "Points: " << member.getPoints() << endl;
     }
     
-    // case member
-    else if (memberID > 0)
-    {
-        // initialize memberIndex to -1
-        int memberIndex = -1;
+    do{
+        // print the header and prompt user to enter the member ID
+        cout << "**************************************************" << endl;
+        cout << setw(38) << "The Perfect Grocery Shop" << endl;
+        cout << "**************************************************" << endl;
+        cout << "Member ID (Enter -1 if not a member): ";
+        cin >> memberID;
 
-        // loop through each member in the members vector
-        for (size_t i = 0; i < members.size(); ++i)
+        // case non-member
+        if (memberID == -1) 
         {
-            // check if the member's ID == the memberID entered
-            if (members[i].getMemberID() == memberID)
+            User user;
+            cout << "Welcome!" << endl;
+            user.getItemCode();
+            user.printReceipt();
+        }
+        
+        // case member
+        else if (memberID > 0)
+        {
+            // initialize memberIndex to -1
+            int memberIndex = -1;
+
+            // loop through each member in the members vector
+            for (size_t i = 0; i < members.size(); ++i)
             {
-                // if found, update memberIndex with the index of the memberID
-                memberIndex = static_cast<int>(i);
-                break;
+                // check if the member's ID == the memberID entered
+                if (members[i].getMemberID() == memberID)
+                {
+                    // if found, update memberIndex with the index of the memberID
+                    memberIndex = static_cast<int>(i);
+                    break;
+                }
+            }
+
+            // after we found the memberID in vector, the numberIndex change, != -1
+            if (memberIndex != -1)
+            {
+                members[memberIndex].getItemCode();
+                members[memberIndex].updateMemberPoints();
+                double discount = members[memberIndex].calcDiscount();
+                members[memberIndex].print();
+            }
+            else
+            {
+                cout << "Member not found." << endl;
             }
         }
 
-        // after we found the memberID in vector, the numberIndex change, != -1
-        if (memberIndex != -1)
-        {
-            members[memberIndex].getItemCode();
-            members[memberIndex].updateMemberPoints();
-            double discount = members[memberIndex].calcDiscount();
-            members[memberIndex].print();
-        }
+        // case manager
         else
         {
-            cout << "Member not found." << endl;
+            Manager mana;
+            mana.getChoice();
         }
-    }
-
-    // case manager
-    else
-    {
-        Manager mana;
-        mana.getChoice();
-    }
+    } while(memberID);
     return 0;
 }

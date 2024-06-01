@@ -33,7 +33,8 @@ class Manager{
                      << " 1. Display Current Day Sales\n"
                      << " 2. Display Menber Information\n"
                      << " 3. Update Items\n"
-                     << " 4. Quit Program\n"
+                     << " 4. Add Items\n"
+                     << " 5. Quit Program\n"
                      << " Choice: ";
                 cin  >> choice;
 
@@ -72,8 +73,8 @@ class Manager{
     
     void daySales(){
         cout << "Total Sales: RM " << User::totalSales << endl;   //take it from user class
-        cout << "Total Items: RM " << User::totalItems << endl;   //take it from user class
-        cout << "Total Transactions: RM " << User::totalTransactions << endl;   //take it from user class
+        cout << "Total Items: " << User::totalItems << endl;   //take it from user class
+        cout << "Total Transactions: " << User::totalTransactions << endl;   //take it from user class
         cout << "Average Amount per Transaction: RM " << User::totalSales / User::totalTransactions << endl;
     }
 
@@ -99,7 +100,6 @@ class Manager{
 
         cout << "Enter the code of the item to update:";
         cin >> code;
-        
 
         for (auto& item:items){
             if (item.getCode() == code && found == false){
