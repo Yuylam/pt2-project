@@ -11,11 +11,8 @@ using namespace std;
 extern vector <Item> items;
 
 int findItemIndex(int code){
-    cout << "Searching for item code: " << code << endl; //testing
     for (int i = 0; i < 10; i++){
-        cout << "Comparing input code: " << code << " with item code: " << items[i].getCode() << endl;  //testing
         if(items[i].getCode() == code){
-            cout << "Item found at index: " << i << endl; //testing
             return i;
         }
     }
@@ -129,7 +126,7 @@ class User{
             << setw(30) << left << "Item Count" << setw(15) << right << quantity << endl
             << setw(30) << left << "Subtotal" << setw(15) << right << price + discount << endl
             << setw(30) << left << "Discount" << setw(15) << right << discount << endl
-            << setw(30) << left << "SST(10%)" << setw(15) << right << calcTax() << endl
+            << setw(30) << left << "SST(6%)" << setw(15) << right << calcTax() << endl
             << setw(30) << left << "Rounding Adjustment" << setw(15) << right << rounding() << endl
             << setw(30) << left << "Total" << setw(15) << right << price << endl;
 

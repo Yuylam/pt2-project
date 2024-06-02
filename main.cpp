@@ -13,6 +13,7 @@
 using namespace std;
 
 vector<Item> items;
+vector<Member> members;
 
 // to read members.txt and push into vector
 void readMembers(vector<Member>& members, const string& filename)
@@ -21,7 +22,7 @@ void readMembers(vector<Member>& members, const string& filename)
     if (!memberFile.is_open())
     {
         cerr << "Error opening file: " << filename << endl;
-        exit;
+        exit(1);
     }
     
     string name;
@@ -30,7 +31,9 @@ void readMembers(vector<Member>& members, const string& filename)
     while (getline(memberFile, name)) 
     {
         memberFile >> memberCode >> memberPoint;
-        memberFile.ignore(); // Ignore the remaining newline after memberPoint
+        memberFile.ignore();
+        memberFile.ignore();
+        cout << name << " " << memberCode << " "<< memberPoint << endl;
         members.push_back(Member(name, memberCode, memberPoint));
     }
     memberFile.close();
@@ -43,7 +46,7 @@ void readItems(vector<Item>& items, const string& filename)
     if (!itemFile.is_open())
     {
         cerr << "Error opening file: " << filename << endl;
-        exit;
+        exit(1);
     }
     
     int itemCode, quantity;
@@ -64,8 +67,6 @@ void readItems(vector<Item>& items, const string& filename)
     }
     itemFile.close();
 }
-
-vector<Member> members;
 
 int main()
 {
@@ -94,7 +95,7 @@ int main()
     do{
         // print the header and prompt user to enter the member ID
         cout << "**************************************************" << endl;
-        cout << setw(38) << "The Perfect Grocery Shop" << endl;
+        cout << setw(38) << right << "The Perfect Grocery Shop" << endl;
         cout << "**************************************************" << endl;
         cout << "Member ID (Enter -1 if not a member): ";
         cin >> memberID;
@@ -122,6 +123,10 @@ int main()
                 {
                     // if found, update memberIndex with the index of the memberID
                     memberIndex = static_cast<int>(i);
+                    cout 
+                    << "Name: " << members[i].getMemberName() << endl
+                    << "ID: " << members[i].getMemberID() << endl
+                    << "Points: " << members[i].getPoints() << endl << endl;
                     break;
                 }
             }
@@ -130,9 +135,9 @@ int main()
             if (memberIndex != -1)
             {
                 members[memberIndex].getItemCode();
-                members[memberIndex].updateMemberPoints();
                 double discount = members[memberIndex].calcDiscount();
-                members[memberIndex].print();
+                members[memberIndex].updateMemberPoints();
+                members[memberIndex].print(discount);
             }
             else
             {

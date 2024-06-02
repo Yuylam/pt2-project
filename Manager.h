@@ -11,6 +11,7 @@
 
 using namespace std;
 
+extern vector<Member> members;
 
 class Manager{
     private: 
@@ -31,7 +32,7 @@ class Manager{
                      << "         The Perfect Grocery Shop         \n"
                      << "******************************************\n"
                      << " 1. Display Current Day Sales\n"
-                     << " 2. Display Menber Information\n"
+                     << " 2. Display Member Information\n"
                      << " 3. Update Items\n"
                      << " 4. Add Items\n"
                      << " 5. Quit Program\n"
@@ -82,13 +83,13 @@ class Manager{
         
             cout << left << setw(20) << "Member Name: " 
                  << left << setw(8) << "ID"  
-                 << left << setw(8) << "Points";
+                 << left << setw(8) << "Points\n";
 
         //for (auto iter = members.begin(); iter != members.end(); iter++){
         for (auto& member:members){
             cout << left << setw(20) << member.getMemberName()    //take from member class
                  << left << setw(8) << member.getMemberID()    //take from member class
-                 << left << setw(8) << member.getPoints();   //take from member class 
+                 << left << setw(8) << member.getPoints() << endl;   //take from member class 
         }
     }
 

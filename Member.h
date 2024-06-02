@@ -62,9 +62,9 @@ public:
         points += newPoints;
     }
     
-    void print(){
-        printReceipt();
-        cout << setw(30) << left << "Member point: " << getPoints() << endl; 
+    void print(int d){
+        printReceipt(d);
+        cout << setw(30) << left << "Member point: " << setw(15) << right << getPoints() << endl; 
 
     }
 };
