@@ -57,11 +57,10 @@ class Item {
         }
 
         void display()const {
-            cout << left << setw(10) << icode
-                 << left << setw(30) << description
-                 << left << setw(10) << price
-                 << left << setw(10) << quantity << endl;
-
+            cout << left << setw(5) << icode
+                 << left << setw(25) << description.substr(0,25)
+                 << right << setw(10) << price
+                 << right << setw(10) << quantity << endl;
         }
 
         //Distructor

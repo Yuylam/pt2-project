@@ -40,7 +40,7 @@ class User{
             int code, index = -1;
             cout << "Item code: ";
             cin >> code;
-            cout << "Entered code: " << code << endl; //testing
+            cout << endl;
             while(code == -1){
                 cout << "Invalid code\n";
                 cout << "Enter the item code: ";
@@ -64,13 +64,9 @@ class User{
                      price += items[index].price;
                      items[index].quantity--;
 
-
                      printItems();
                      cout << setw(30) << left <<  "Subtotal" << setw(15) << right << price << endl << endl;
                 }
-               
-                
-                
 
                 cout << "Enter -1 to proceed to payment\n";
                 cout << "Enter the item code: ";

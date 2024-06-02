@@ -33,7 +33,6 @@ void readMembers(vector<Member>& members, const string& filename)
         memberFile >> memberCode >> memberPoint;
         memberFile.ignore();
         memberFile.ignore();
-        cout << name << " " << memberCode << " "<< memberPoint << endl;
         members.push_back(Member(name, memberCode, memberPoint));
     }
     memberFile.close();
@@ -60,10 +59,6 @@ void readItems(vector<Item>& items, const string& filename)
         itemFile >> price >> quantity;
         itemFile.ignore(); // Ignore the remaining newline after quantity
         items.push_back(Item(itemCode,description,price,quantity));
-
-        //testing
-        cout << "Read item - Code: " << itemCode << ", Description: " << description 
-             << ", Price: " << price << ", Quantity: " << quantity << endl;
     }
     itemFile.close();
 }
@@ -76,21 +71,6 @@ int main()
     // pass the vector and filename to read input file function
     readMembers(members, "members.txt");
     readItems(items, "items.txt");
-
-    //testing
-    cout << "Items loaded:\n";
-    for (const auto& item : items) {
-        cout << "Code: " << item.getCode() << ", Description: " << item.getDescription() 
-             << ", Price: " << item.getPrice() << ", Quantity: " << item.getQuantity() << endl;
-    }
-
-    cout << "Members loaded:\n";
-    for (const auto& member : members) {
-        cout 
-        << "ID: " << member.getMemberID() << ", "
-        << "Name: " << member.getMemberName() << ", "
-        << "Points: " << member.getPoints() << endl;
-    }
     
     do{
         // print the header and prompt user to enter the member ID
@@ -107,6 +87,7 @@ int main()
             cout << "Welcome!" << endl;
             user.getItemCode();
             user.printReceipt();
+            cout << endl;
         }
         
         // case member
@@ -138,6 +119,7 @@ int main()
                 double discount = members[memberIndex].calcDiscount();
                 members[memberIndex].updateMemberPoints();
                 members[memberIndex].print(discount);
+                cout << endl;
             }
             else
             {
