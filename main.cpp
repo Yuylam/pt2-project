@@ -105,7 +105,7 @@ int main()
                     // if found, update memberIndex with the index of the memberID
                     memberIndex = static_cast<int>(i);
                     cout 
-                    << "Name: " << members[i].getMemberName() << endl
+                    << "Welcome " << members[i].getMemberName() << "!" << endl
                     << "ID: " << members[i].getMemberID() << endl
                     << "Points: " << members[i].getPoints() << endl << endl;
                     break;

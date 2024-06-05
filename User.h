@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <iomanip>
+#include <cmath>
 //#include "Member.h"
 #include "Item.h"
 using namespace std;
@@ -40,12 +41,12 @@ class User{
             int code, index = -1;
             cout << "Item code: ";
             cin >> code;
-            cout << endl;
             while(code == -1){
                 cout << "Invalid code\n";
                 cout << "Enter the item code: ";
                 cin >> code;
             }
+            cout << endl;
             while(code != -1){
                 index = findItemIndex(code);
                 if(index == -1){
@@ -65,7 +66,7 @@ class User{
                      items[index].quantity--;
 
                      printItems();
-                     cout << setw(30) << left <<  "Subtotal" << setw(15) << right << price << endl << endl;
+                     cout << setw(30) << left <<  "Subtotal" << setw(20) << right << price << endl << endl;
                 }
 
                 cout << "Enter -1 to proceed to payment\n";
@@ -82,28 +83,21 @@ class User{
         }
 
         double rounding(){
-            int temp = price * 100;
-            int remainder = temp % 5;
-            double rounding;
-            if (remainder <= 2)
-                rounding = - remainder / 100.0;
-            else
-                rounding = remainder / 100.0;
-
-            price += rounding;
-            return rounding;
+            double temp = price;
+            price = round(price * 20.0) / 20.0;
+            return price - temp;
         }
 
         void printItems(){
             cout << left << setprecision(2) << fixed
             << setw(5) << "Code" 
             << setw(25) << "Product Name"
-            << setw(19) << right << "Unit Price(RM)" << endl;
+            << setw(20) << right << "Unit Price(RM)" << endl;
             for (int i = 0; i < quantity; i++){
                 cout 
                 << setw(5) << left << items[itemsIndex[i]].icode 
                 << setw(25) << left << items[itemsIndex[i]].description.substr(0,25) 
-                << setw(19) << right << items[itemsIndex[i]].price << endl;
+                << setw(20) << right << items[itemsIndex[i]].price << endl;
             }
         }
 
@@ -119,12 +113,12 @@ class User{
 
             printItems();
             cout << endl
-            << setw(30) << left << "Item Count" << setw(19) << right << quantity << endl
-            << setw(30) << left << "Subtotal" << setw(19) << right << price + discount << endl
-            << setw(30) << left << "Discount" << setw(19) << right << discount << endl
-            << setw(30) << left << "SST(6%)" << setw(19) << right << calcTax() << endl
-            << setw(30) << left << "Rounding Adjustment" << setw(19) << right << rounding() << endl
-            << setw(30) << left << "Total" << setw(19) << right << price << endl;
+            << setw(30) << left << "Item Count" << setw(20) << right << quantity << endl
+            << setw(30) << left << "Subtotal" << setw(20) << right << price + discount << endl
+            << setw(30) << left << "Discount" << setw(20) << right << setprecision(2) << fixed << static_cast<double>(discount) << endl
+            << setw(30) << left << "SST(6%)" << setw(20) << right << calcTax() << endl
+            << setw(30) << left << "Rounding Adjustment" << setw(20) << right << rounding() << endl
+            << setw(30) << left << "Total" << setw(20) << right << price << endl;
 
             totalSales += price;
             totalItems += quantity;
