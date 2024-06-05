@@ -65,7 +65,7 @@ class User{
                      items[index].quantity--;
 
                      printItems();
-                     cout << setw(31) << left <<  "Subtotal" << setw(19) << right << price << endl << endl;
+                     cout << setw(30) << left <<  "Subtotal" << setw(15) << right << price << endl << endl;
                 }
 
                 cout << "Enter -1 to proceed to payment\n";
@@ -96,12 +96,12 @@ class User{
 
         void printItems(){
             cout << left << setprecision(2) << fixed
-            << setw(6) << "Code" 
+            << setw(5) << "Code" 
             << setw(25) << "Product Name"
-            << setw(20) << right << "Unit Price(RM)\n";
+            << setw(19) << right << "Unit Price(RM)" << endl;
             for (int i = 0; i < quantity; i++){
                 cout 
-                << setw(6) << left << items[itemsIndex[i]].icode 
+                << setw(5) << left << items[itemsIndex[i]].icode 
                 << setw(25) << left << items[itemsIndex[i]].description.substr(0,25) 
                 << setw(19) << right << items[itemsIndex[i]].price << endl;
             }
@@ -119,12 +119,12 @@ class User{
 
             printItems();
             cout << endl
-            << setw(31) << left << "Item Count" << setw(19) << right << quantity << endl
-            << setw(31) << left << "Subtotal" << setw(19) << right << price + discount << endl
-            << setw(31) << left << "Discount" << setw(19) << right << discount << endl
-            << setw(31) << left << "SST(6%)" << setw(19) << right << calcTax() << endl
-            << setw(31) << left << "Rounding Adjustment" << setw(19) << right << rounding() << endl
-            << setw(31) << left << "Total" << setw(19) << right << price << endl;
+            << setw(30) << left << "Item Count" << setw(19) << right << quantity << endl
+            << setw(30) << left << "Subtotal" << setw(19) << right << price + discount << endl
+            << setw(30) << left << "Discount" << setw(19) << right << discount << endl
+            << setw(30) << left << "SST(6%)" << setw(19) << right << calcTax() << endl
+            << setw(30) << left << "Rounding Adjustment" << setw(19) << right << rounding() << endl
+            << setw(30) << left << "Total" << setw(19) << right << price << endl;
 
             totalSales += price;
             totalItems += quantity;
