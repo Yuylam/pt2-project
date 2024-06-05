@@ -64,7 +64,7 @@ public:
     
     void print(int d){
         printReceipt(d);
-        cout << setw(30) << left << "Member points" << setw(15) << right << getPoints() << endl; 
+        cout << setw(31) << left << "Member points" << setw(19) << right << getPoints() << endl; 
 
     }
 };

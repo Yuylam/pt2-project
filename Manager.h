@@ -56,16 +56,16 @@ class Manager{
 
      void getChoice(){
             do{
-                cout << "******************************************\n"
-                     << "         The Perfect Grocery Shop         \n"
-                     << "******************************************\n"
-                     << "\t1. Display Current Day Sales\n"
-                     << "\t2. Display Member Information\n"
-                     << "\t3. Display Item\n"
-                     << "\t4. Update Items\n"
-                     << "\t5. Add Items\n"
-                     << "\t6. Quit Program\n"
-                     << "\t7. Back to Home\n"
+                cout << "**************************************************" << endl
+                     << setw(36) << right << "The Perfect Grocery Shop" << endl
+                     << "**************************************************" << endl
+                     << "\t  1. Display Current Day Sales\n"
+                     << "\t  2. Display Member Information\n"
+                     << "\t  3. Display Item\n"
+                     << "\t  4. Update Items\n"
+                     << "\t  5. Add Items\n"
+                     << "\t  6. Quit Program\n"
+                     << "\t  7. Back to Home\n"
                      << "Choice: ";
                 cin  >> choice;
 
@@ -147,7 +147,7 @@ class Manager{
         int newQuantity;
         bool found = false;
 
-        cout << "Enter the code of the item to update:";
+        cout << setw(45) << left << "Enter the code of the item to update:";
         cin >> code;
 
         for (auto& item:items){
@@ -157,12 +157,12 @@ class Manager{
                 << "Price: " << item.getPrice() << endl
                 << "Quantity: " << item.getQuantity() << endl;
                 //update price
-                cout << "Enter the new price: ";
+                cout << setw(45) << left << "Enter the new price: ";
                 cin >> newPrice;
                 item.updatePrice(newPrice);
 
                 //update quantity
-                cout << "Enter the new quantity: ";
+                cout << setw(45) << left << "Enter the new quantity: ";
                 cin >> newQuantity;
                 item.updateQuantity(newQuantity);
                 cout << endl;
@@ -187,7 +187,7 @@ class Manager{
         string description;
         double price;
 
-        cout << "Enter the code of the new item:";
+        cout << setw(45) << left << "Enter the code of the new item:";
         cin >> code;
         bool found = false;
         do{
@@ -196,7 +196,7 @@ class Manager{
                 if (item.getCode() == code){
                     found = true;
                     cout << "Item already exist\n";
-                    cout << "Enter the code of the new item:";
+                    cout << setw(45) << left << "Enter the code of the new item:";
                     cin >> code;
                     break;
                 }
@@ -207,10 +207,10 @@ class Manager{
         cin.ignore();
         getline(cin, description);
 
-        cout << "Enter the price of the new item:";
+        cout << setw(45) << left << "Enter the price of the new item:";
         cin >> price;
 
-        cout << "Enter the quantity of the new item:";
+        cout << setw(45) << left << "Enter the quantity of the new item:";
         cin >> quantity;
 
         items.push_back(Item(code, description, price, quantity));

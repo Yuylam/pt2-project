@@ -75,7 +75,7 @@ int main()
     do{
         // print the header and prompt user to enter the member ID
         cout << "**************************************************" << endl;
-        cout << setw(38) << right << "The Perfect Grocery Shop" << endl;
+        cout << setw(36) << right << "The Perfect Grocery Shop" << endl;
         cout << "**************************************************" << endl;
         cout << "Member ID (Enter -1 if not a member): ";
         cin >> memberID;
@@ -133,6 +133,6 @@ int main()
             Manager mana;
             mana.getChoice();
         }
-    } while(memberID);
+    } while(1);
     return 0;
 }
