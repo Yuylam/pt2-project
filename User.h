@@ -5,7 +5,6 @@
 #include <vector>
 #include <iomanip>
 #include <cmath>
-//#include "Member.h"
 #include "Item.h"
 using namespace std;
 
@@ -37,16 +36,16 @@ class User{
             price = 0.0;
         }
 
+        void reset(){
+            itemsIndex.clear();
+            quantity = 0;
+            price = 0;
+        }
+
         void getItemCode(){
             int code, index = -1;
             cout << "Item code: ";
             cin >> code;
-            while(code == -1){
-                cout << "Invalid code\n";
-                cout << "Enter the item code: ";
-                cin >> code;
-            }
-            cout << endl;
             while(code != -1){
                 index = findItemIndex(code);
                 if(index == -1){

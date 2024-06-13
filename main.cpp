@@ -58,7 +58,7 @@ void readItems(vector<Item>& items, const string& filename)
         getline(itemFile,description);
         itemFile >> price >> quantity;
         itemFile.ignore(); // Ignore the remaining newline after quantity
-        items.push_back(Item(itemCode,description,price,quantity));
+        items.push_back(Item(itemCode, description, price, quantity));
     }
     itemFile.close();
 }

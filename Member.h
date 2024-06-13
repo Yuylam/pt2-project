@@ -2,8 +2,6 @@
 #define MEMBER_H
 
 #include "User.h"
-//#include "Manager.h"
-//#include "Item.h"
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -65,7 +63,8 @@ public:
     void print(int d){
         printReceipt(d);
         cout << setw(31) << left << "Member points" << setw(19) << right << getPoints() << endl; 
-
+        // Reset values for member in case of another purchase
+        reset();
     }
 };
 

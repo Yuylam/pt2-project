@@ -61,11 +61,12 @@ class Manager{
                      << "**************************************************" << endl
                      << "\t1. Display Current Day Sales\n"
                      << "\t2. Display Member Information\n"
-                     << "\t3. Display Item\n"
-                     << "\t4. Update Items\n"
-                     << "\t5. Add Items\n"
-                     << "\t6. Quit Program\n"
-                     << "\t7. Back to Home\n"
+                     << "\t3. Add Member\n"
+                     << "\t4. Display Item\n"
+                     << "\t5. Update Items\n"
+                     << "\t6. Add Items\n"
+                     << "\t7. Quit Program\n"
+                     << "\t8. Back to Home\n"
                      << "Choice: ";
                 cin  >> choice;
                 cout << endl;
@@ -78,36 +79,30 @@ class Manager{
                         displayMemberInfo();
                         break;
                     case 3:
-                        displayItems();
+                        addMember();
                         break;
                     case 4:
-                        updateItems();
+                        displayItems();
                         break;
                     case 5:
-                        addItem();
+                        updateItems();
                         break;
                     case 6:
+                        addItem();
+                        break;
+                    case 7:
                         cout << "Saving information...\n";
                         writeItems("items.txt");
                         writeMembers("members.txt");
                         cout << "Exiting program...\n";
                         exit (0);
-                    case 7:
+                    case 8:
                         break;
                     default:
                         cout << "Invalid choice. Please try again.\n";
 
                 }
-                // if (choice == 1){
-                //    daySales();
-                // }
-                // else if (choice == 2){
-                //     displayMemberInfo();
-                // }
-                // else if (choice == 3){
-                //     updateItems();
-                // }
-            }while (choice != 7);
+            }while (choice != 8);
         }
     
     void daySales(){
@@ -118,17 +113,26 @@ class Manager{
     }
 
     void displayMemberInfo(){
-        
-            cout << left << setw(30) << "Member Name" 
-                 << left << setw(8) << "ID"
-                 << left << setw(8) << "Points" << endl;
+        cout << left << setw(30) << "Member Name" 
+                << left << setw(8) << "ID"
+                << left << setw(8) << "Points" << endl;
 
-        //for (auto iter = members.begin(); iter != members.end(); iter++){
         for (auto& member:members){
             cout << left << setw(30) << member.getMemberName().substr(0,29)    //take from member class
                  << left << setw(8) << member.getMemberID()    //take from member class
                  << left << setw(8) << member.getPoints() << endl;   //take from member class 
         }
+        cout << endl;
+    }
+
+    void addMember(){
+        string name;
+        
+        cout << "Enter the name of the new member: ";
+        cin.ignore();
+        getline(cin, name);
+        members.push_back(Member(name, members.size() + 1, 0));
+        cout << endl;
     }
 
     void displayItems(){
@@ -140,6 +144,7 @@ class Manager{
         for(auto &item:items){
             item.display();
         }
+        cout << endl;
     }
 
     void updateItems(){
@@ -158,7 +163,7 @@ class Manager{
                 << "Price: " << item.getPrice() << endl
                 << "Quantity: " << item.getQuantity() << endl;
                 //update price
-                cout << "Enter the new price: ";
+                cout << "Enter the new price: RM ";
                 cin >> newPrice;
                 item.updatePrice(newPrice);
 
@@ -175,6 +180,7 @@ class Manager{
                 << right << setw(10) << "Price"
                 << right << setw(10) << "Quantity" << endl;
                 item.display();
+                cout << endl;
 
                 //update flag
                 found = true;
@@ -208,14 +214,14 @@ class Manager{
         cin.ignore();
         getline(cin, description);
 
-        cout << "Enter the price of the new item: ";
+        cout << "Enter the price of the new item: RM ";
         cin >> price;
 
         cout << "Enter the quantity of the new item: ";
         cin >> quantity;
 
         items.push_back(Item(code, description, price, quantity));
-
+        cout << endl;
     }
     //Destructor
     ~Manager(){};
